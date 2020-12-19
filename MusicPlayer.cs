@@ -65,10 +65,10 @@ public class Musicrev2 : UdonSharpBehaviour
         ChangeImg();
     }
     public void Play(){
-        SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All,"_Play");
+        SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All,"GlobalPlay");
     }
 
-    public void _Play(){
+    public void GlobalPlay(){
         if (Networking.IsOwner(Networking.LocalPlayer, this.gameObject)){
             _musicisplay = !musicisplay;
         }
@@ -83,10 +83,10 @@ public class Musicrev2 : UdonSharpBehaviour
     }
 
     public void Skip(){
-        SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All,"_Skip");
+        SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All,"GlobalSkip");
     }
 
-    public void _Skip(){
+    public void GlobalSkip(){
         bgmplayer.Stop();
         musicnumber=(int)Mathf.Repeat(musicnumber+1,bgmsources.Length);
         bgmplayer.clip = bgmsources[musicnumber];
